@@ -101,22 +101,24 @@ resource "local_file" "madhuuu_key" {
 
 #Instance 
 
-resource "aws_instance" "myinstance1" {
+resource "aws_instance" "myinstance" {
+  count         = var.inst_count
   ami           = var.ami_id 
   instance_type = var.instance_type     
   subnet_id     = aws_subnet.madhu_subnet1.id
   key_name      = "madhuuu_key"
   security_groups = [aws_security_group.madhu_sg.id]
   tags = {
-    Name = "webserver-public"
+    Name = "webserver-public-${count.index + 1}"  
   }
 }
 
-output "public_ip1" {
-   value = aws_instance.myinstance1.public_ip
+output "public_ips" {
+  value = aws_instance.myinstance[*].public_ip
 }
 
-output "id" {
-    value = aws_instance.myinstance1.id
+output "instance_ids" {
+  value = aws_instance.myinstance[*].id
 }
+
 
