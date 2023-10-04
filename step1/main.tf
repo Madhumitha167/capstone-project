@@ -105,7 +105,7 @@ resource "aws_instance" "myinstance" {
   ami           = var.ami_id 
   instance_type = var.instance_type     
   subnet_id     = aws_subnet.madhu_subnet1.id
-  key_name      = "madhuuu_key"
+  key_name      = "new_key"
   security_groups = [aws_security_group.madhu_sg.id]
   tags = {
     Name = "webserver-terr"  
