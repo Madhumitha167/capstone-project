@@ -56,3 +56,7 @@ jobs:
           terraform init
           terraform plan
           terraform apply -input=false -auto-approve
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
+        if: failure()
