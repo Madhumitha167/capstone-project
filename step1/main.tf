@@ -84,8 +84,8 @@ resource "aws_security_group" "madhu_sg" {
 
 #Creating a keypair
 
-resource "aws_key_pair" "madhuuu_key" {
-  key_name   = "madhuuu_key"
+resource "aws_key_pair" "new_key" {
+  key_name   = "new_key"
   public_key = tls_private_key.rsa.public_key_openssh
 }
 
@@ -94,9 +94,9 @@ resource "tls_private_key" "rsa" {
   rsa_bits  = 4096
 }
 
-resource "local_file" "madhuuu_key" {
+resource "local_file" "new_key" {
     content  = tls_private_key.rsa.private_key_pem
-    filename = "madhuuukey"
+    filename = "newkey"
 }
 
 #Instance 
