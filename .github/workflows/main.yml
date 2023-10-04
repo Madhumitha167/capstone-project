@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "java" ]
   workflow_dispatch:
 jobs:
   build:
